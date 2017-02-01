@@ -13,6 +13,13 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+    sourceSets {
+        main {
+            java {
+                exclude 'com.dailycation.base.http.BaseApi.java'
+            }
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false

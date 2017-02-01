@@ -7,4 +7,15 @@ import android.app.Application;
  */
 
 public class BaseApplication extends Application{
+    private static BaseApplication instance;
+
+    public static BaseApplication getInstance(){
+        if (instance == null){
+            synchronized (BaseApplication.class){
+                if (instance == null)
+                    instance = new BaseApplication();
+            }
+        }
+        return instance;
+    }
 }
