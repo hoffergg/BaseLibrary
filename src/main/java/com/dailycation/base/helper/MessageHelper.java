@@ -2,9 +2,10 @@ package com.dailycation.base.helper;
 
 import android.widget.Toast;
 
-import com.orieange.lolteacher.MyApplication;
-import com.orieange.lolteacher.R;
-import com.orieange.lolteacher.data.source.SourceException;
+import com.dailycation.base.BaseApplication;
+import com.dailycation.base.R;
+import com.dailycation.base.data.source.SourceException;
+
 
 /**
  * 显示各类消息，Toast消息，Dialog消息等
@@ -13,8 +14,8 @@ import com.orieange.lolteacher.data.source.SourceException;
 
 public class MessageHelper {
 
-    public static MyApplication getApplicationContext(){
-        return MyApplication.getMyApplication();
+    public static BaseApplication getApplicationContext(){
+        return BaseApplication.getInstance();
     }
 
     public static void showSourceException(SourceException e){

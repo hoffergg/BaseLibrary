@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import com.dailycation.base.BaseApplication;
+import com.dailycation.base.helper.LogHelper;
+import com.dailycation.base.http.RequestParamNullException;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -37,7 +40,7 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
             ex = new SourceException(e, httpException.code(),httpException.message());
             if(httpException.code() == SourceException.UNAUTHORIZED){
                 //认证错误
-                MyApplication.getMyApplication().logout();
+                //MyApplication.getMyApplication().logout();
             }
         } else if (e instanceof HttpResultException){
             //服务器返回的错误
@@ -70,7 +73,7 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
      * @return
      */
     public boolean isNetworkOn(){
-        ConnectivityManager cm = (ConnectivityManager) MyApplication.getMyApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) BaseApplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
         return (info != null && info.isConnectedOrConnecting());
     }
@@ -82,8 +85,8 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
      */
     protected abstract void onNoNet();
 
-    protected boolean isRespNull(BaseResp resp){
-        return resp.getData().isJsonNull();
-    }
+//    protected boolean isRespNull(BaseResp resp){
+//        return resp.getData().isJsonNull();
+//    }
 
 }

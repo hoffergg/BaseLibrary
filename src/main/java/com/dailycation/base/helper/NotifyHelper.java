@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 
+import com.dailycation.base.R;
 
 
 /**
@@ -17,13 +18,13 @@ import android.support.v4.app.NotificationCompat;
  */
 public class NotifyHelper {
     private static final String LOG_TAG = NotifyHelper.class.getSimpleName();
-    public static void showNotification(Context context, String title, String desc, PendingIntent pendingIntent, int notificationId){
+    public static void showNotification(Context context, String title, String desc, int icon,PendingIntent pendingIntent, int notificationId){
         LogHelper.d(LOG_TAG,"show status bar notification title:" + title + " desc:" + desc + " id:" + notificationId + " pendingIntent:" + pendingIntent.toString());
         NotificationCompat.Builder mBuilder = null;
         try {
             mBuilder =
                     new NotificationCompat.Builder(context)
-                            .setSmallIcon(R.mipmap.logo)
+                            .setSmallIcon(icon)
                             .setContentTitle(title)
                             .setContentText(desc)
                             .setAutoCancel(true);

@@ -6,6 +6,11 @@ package com.dailycation.base.view;
  */
 
 public interface IBaseView {
+
+    /**
+     * 是否显示进度条
+     * @param show
+     */
     void showLoading(boolean show);
 
     /**

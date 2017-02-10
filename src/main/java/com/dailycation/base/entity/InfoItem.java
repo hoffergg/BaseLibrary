@@ -1,4 +1,4 @@
-package com.dailycation.base.model;
+package com.dailycation.base.entity;
 
 /**
  * 普通显示栏

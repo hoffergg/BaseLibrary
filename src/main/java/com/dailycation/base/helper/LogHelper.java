@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import com.dailycation.base.util.TextUtil;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -23,15 +25,9 @@ import java.util.Map;
  * @version 1.0 2015/12/28
  */
 public class LogHelper {
-    private static final String DEFAULT_TAG = "lol";
+    private static final String DEFAULT_TAG = "antilost";
     public final static String TAG_MAIN = DEFAULT_TAG;
-    public final static String TAG_HH = "hehu";
-    public final static String TAG_DLX = "dlx";
-    public final static String TAG_LW = "lvwei";
-    public final static String TAG_NET = "network";
-    public static final String TAG_EASE = "ease";
     public static final String TAG_SOURCE = "source";
-    public static final String TAG_PAGE = "page";
 
     public static int LOG_LEVEL = 6;   //6 means debug mode,-1 means publish mode.
     public static int EXCEPTION = 0;

@@ -6,5 +6,7 @@ package com.dailycation.base.presenter;
  */
 
 public interface IBasePresenter {
+    void onCreate();
+    void onResume();
     void onDestroy();
 }

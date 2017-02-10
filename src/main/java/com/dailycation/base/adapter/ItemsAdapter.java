@@ -1,13 +1,11 @@
 package com.dailycation.base.adapter;
 
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dailycation.base.model.InfoItem;
+import com.dailycation.base.entity.InfoItem;
 
 import java.util.List;
 
