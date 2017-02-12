@@ -21,12 +21,16 @@ public abstract class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.MyV
         this.items = items;
     }
 
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         InfoItem item = items.get(position);
-        holder.icon.setImageResource(item.getIconRes());
-        holder.nextIcon.setImageResource(item.getNextIconRes());
-        holder.title.setText(item.getTitle());
+        if(item.getIconRes()!=0)
+            holder.icon.setImageResource(item.getIconRes());
+        if(item.getNextIconRes()!=0)
+            holder.nextIcon.setImageResource(item.getNextIconRes());
+        if(item.getTitle()!=null)
+            holder.title.setText(item.getTitle());
     }
 
     @Override

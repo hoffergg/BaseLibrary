@@ -10,6 +10,16 @@ public class InfoItem {
     int nextIconRes;
     String title;
 
+    private InfoItem(){
+
+    }
+
+    public InfoItem(int iconRes, int nextIconRes, String title) {
+        this.iconRes = iconRes;
+        this.nextIconRes = nextIconRes;
+        this.title = title;
+    }
+
     public int getIconRes() {
         return iconRes;
     }
