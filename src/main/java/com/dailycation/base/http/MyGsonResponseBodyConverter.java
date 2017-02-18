@@ -42,7 +42,7 @@ final class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
     @Override public T convert(ResponseBody value) throws IOException {
             String response = value.string();
             Resp resultResponse = gson.fromJson(response, Resp.class);
-            if (resultResponse.getStatusCode() == 0){
+            if (resultResponse.getStatusCode() != 0){
                 return gson.fromJson(response, type);
             } else {
                 throw new HttpResultException(resultResponse.getErrorCode(), resultResponse.getErrorDesp());

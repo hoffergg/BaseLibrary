@@ -10,7 +10,7 @@ public interface IRegisterView extends IBaseView{
     /**
      * 注册成功
      */
-    void showRegisterSuccess();
+    void onRegisterSuccess(String userName);
 
     /**
      * 输入格式错误

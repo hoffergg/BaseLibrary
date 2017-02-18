@@ -15,6 +15,24 @@ public interface IUser {
     /**
      * set user token
      */
-    void setToken();
+    void setToken(String token);
+
+    /**
+     * is logged in
+     * @return
+     */
+    boolean isLogin();
+
+    /**
+     * set login status
+     * @param login
+     */
+    void setLoginStatus(boolean login);
+
+    /**
+     * get user id
+     */
+    void getUserId();
+
 
 }
