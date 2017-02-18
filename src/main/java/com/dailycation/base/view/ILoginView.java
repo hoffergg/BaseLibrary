@@ -2,6 +2,8 @@ package com.dailycation.base.view;
 
 import android.view.View;
 
+import com.dailycation.base.model.IUser;
+
 /**
  * Created by hoffer on 17/1/21.
  */
@@ -30,4 +32,10 @@ public interface ILoginView extends IBaseView{
      * @param desc 错误描述
      */
     public void showLoginError(int code,String desc);
+
+    /**
+     * 显示本地记录数据
+     * @param user
+     */
+    public void showLocalData(IUser user);
 }

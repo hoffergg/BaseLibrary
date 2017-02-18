@@ -32,7 +32,17 @@ public interface IUser {
     /**
      * get user id
      */
-    void getUserId();
+    long getUserId();
+
+    /**
+     * get user account
+     */
+    String getUserAccount();
+
+    /**
+     * set user account
+     */
+    void setUserAccount(String userAccount);
 
 
 }
