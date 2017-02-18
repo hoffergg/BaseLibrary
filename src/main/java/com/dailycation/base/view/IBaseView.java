@@ -8,18 +8,24 @@ package com.dailycation.base.view;
 public interface IBaseView {
 
     /**
-     * 是否显示进度条
+     * update loading UI
      * @param show
      */
     void showLoading(boolean show);
 
     /**
-     * 无网络提示
+     * update UI when there is no network
      */
     void showNoNet();
 
     /**
-     *无数据提示
+     * update UI when there is no data
      */
     void showNoData();
+
+    /**
+     * show some text message
+     * @param msg
+     */
+    void showMessage(String msg);
 }
