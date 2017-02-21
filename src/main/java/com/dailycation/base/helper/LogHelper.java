@@ -144,6 +144,11 @@ public class LogHelper {
             Log.d(tag, msg);
     }
 
+    public static void st(String msg) {
+        if (LOG_LEVEL > DEBUG)
+            Log.d(DEFAULT_TAG, getClassName() + "->" + getMethodName() + "->" + msg);
+    }
+
     /**
      * 初始化日记保存系统
      */
