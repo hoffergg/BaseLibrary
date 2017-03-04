@@ -39,8 +39,7 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
             HttpException httpException = (HttpException) e;
             ex = new SourceException(e, httpException.code(),httpException.message());
             if(httpException.code() == SourceException.UNAUTHORIZED){
-                //认证错误
-                //MyApplication.getMyApplication().logout();
+                BaseApplication.getInstance().onUserUnauthorized();
             }
         } else if (e instanceof HttpResultException){
             //服务器返回的错误
