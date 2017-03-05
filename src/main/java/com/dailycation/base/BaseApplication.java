@@ -6,7 +6,7 @@ import android.app.Application;
  * Created by hoffer on 17/1/21.
  */
 
-public class BaseApplication extends Application implements BaseCallBack{
+public class BaseApplication extends Application implements IApplication {
     private static BaseApplication instance;
 
     public static BaseApplication getInstance(){
@@ -17,6 +17,7 @@ public class BaseApplication extends Application implements BaseCallBack{
     public void onCreate() {
         super.onCreate();
         instance = this;
+        initDebugTools();
     }
 
     /**
@@ -25,5 +26,12 @@ public class BaseApplication extends Application implements BaseCallBack{
     @Override
     public void onUserUnauthorized() {
 
+    }
+
+    /**
+     * init debug tools
+     */
+    @Override
+    public void initDebugTools() {
     }
 }
