@@ -7,4 +7,11 @@
     <dimen name="large_margin">20dp</dimen>
     <dimen name="x_large_margin">40dp</dimen>
     <dimen name="xx_large_margin">80dp</dimen>
+
+    <dimen name="h1">20sp</dimen>
+    <dimen name="h2">18sp</dimen>
+    <dimen name="h3">15sp</dimen>
+    <dimen name="h4">10sp</dimen>
+    <dimen name="h5">5sp</dimen>
+
 </resources>
