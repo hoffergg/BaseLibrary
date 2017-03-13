@@ -259,7 +259,7 @@ public class LogHelper {
      * @param msg
      */
     public static void logToFile(String level, String tag, String msg) {
-        String log = TextUtil.getFormatedTime(System.currentTimeMillis()) + " " + level + "/" + tag + ":" + msg + "\r\n";
+        String log = TextUtil.getFormattedTime(System.currentTimeMillis()) + " " + level + "/" + tag + ":" + msg + "\r\n";
         try {
             byte[] data = log.getBytes("UTF-8");
             if (fos != null)
