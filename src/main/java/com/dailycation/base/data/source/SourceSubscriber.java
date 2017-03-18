@@ -3,10 +3,12 @@ package com.dailycation.base.data.source;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Toast;
 
 import com.dailycation.base.BaseApplication;
 import com.dailycation.base.helper.LogHelper;
 import com.dailycation.base.http.RequestParamNullException;
+import com.dailycation.base.util.ToastUtil;
 import com.google.gson.JsonParseException;
 
 import org.json.JSONException;
@@ -63,6 +65,7 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
         }
         if(ex!=null) {
             LogHelper.e(LogHelper.TAG_SOURCE, ex.toString());
+            Toast.makeText(BaseApplication.getInstance(),ex.toString(),Toast.LENGTH_SHORT).show();
             onError(ex);
         }
     }
