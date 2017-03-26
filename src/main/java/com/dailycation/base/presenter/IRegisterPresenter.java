@@ -25,5 +25,10 @@ public interface IRegisterPresenter extends IBasePresenter{
      */
     boolean checkInput(String userName,String password,String rePassword,String verifyCode);
 
+    /**
+     * request verify code for a phone
+     * @param phone
+     */
+    void requestVerifyCode(String phone);
 
 }

@@ -1,5 +1,7 @@
 package com.dailycation.base.util;
 
+import android.text.TextUtils;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -43,9 +45,7 @@ public class TextUtil {
         return null;
     }
 
-
-
-
-
-
+    public static boolean isPhoneNumber(String phone) {
+        return !TextUtils.isEmpty(phone) && phone.length() == 11;
+    }
 }
