@@ -70,8 +70,6 @@ public class NotifyHelper {
             m.start();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            m.release();
         }
     }
 }
