@@ -22,6 +22,7 @@ package com.dailycation.base.http;
 
 import com.dailycation.base.data.source.HttpResultException;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -47,6 +48,25 @@ final class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
             } else {
                 throw new HttpResultException(resultResponse.getErrorCode(), resultResponse.getErrorDesp());
             }
+    }
+
+    public class Resp {
+        @SerializedName("result")
+        int statusCode;
+        int errorCode;
+        String errorDesp;
+
+        public int getStatusCode() {
+            return statusCode;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
+        }
+
+        public String getErrorDesp() {
+            return errorDesp;
+        }
     }
 }
 

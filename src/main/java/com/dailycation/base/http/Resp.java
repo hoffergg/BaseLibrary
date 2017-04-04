@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by hehu on 17-1-6.
  */
 
+@Deprecated
 public class Resp {
     @SerializedName("result")
     int statusCode;
@@ -22,14 +23,5 @@ public class Resp {
 
     public String getErrorDesp() {
         return errorDesp;
-    }
-
-    @Override
-    public String toString() {
-        return "Resp{" +
-                "statusCode=" + statusCode +
-                ", errorCode=" + errorCode +
-                ", errorDesp='" + errorDesp + '\'' +
-                '}';
     }
 }

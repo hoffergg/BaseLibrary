@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.pm.PackageManager;
 
+import com.dailycation.base.model.IUser;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -38,6 +40,11 @@ public class BaseApplication extends Application implements IApplication {
      */
     @Override
     public void initDebugTools() {
+    }
+
+    @Override
+    public IUser getCurrentUser() {
+        return null;
     }
 
     public boolean isMainProcess(){
