@@ -29,44 +29,48 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        SourceException ex = null;
-        if(e instanceof RequestParamNullException){
-            //请求参数组装时遇到null错误
-            ex = new SourceException(e, SourceException.REQUEST_PARAM_NULL_ERROR,"Request Make Params Encounter Null Exception");
-        } else if(e instanceof RequestException) {
-            //请求错误，请求本身错误、网络错误
-            ex = new SourceException(e, SourceException.REQUEST_ERROR,"Request Exception");
-        } else if (e instanceof HttpException){
-            //HTTP错误
-            HttpException httpException = (HttpException) e;
-            ex = new SourceException(e, httpException.code(),httpException.message());
-            if(httpException.code() == SourceException.UNAUTHORIZED){
-                BaseApplication.getInstance().onUserUnauthorized();
+        try {
+            SourceException ex = null;
+            if (e instanceof RequestParamNullException) {
+                //请求参数组装时遇到null错误
+                ex = new SourceException(e, SourceException.REQUEST_PARAM_NULL_ERROR, "Request Make Params Encounter Null Exception");
+            } else if (e instanceof RequestException) {
+                //请求错误，请求本身错误、网络错误
+                ex = new SourceException(e, SourceException.REQUEST_ERROR, "Request Exception");
+            } else if (e instanceof HttpException) {
+                //HTTP错误
+                HttpException httpException = (HttpException) e;
+                ex = new SourceException(e, httpException.code(), httpException.message());
+                if (httpException.code() == SourceException.UNAUTHORIZED) {
+                    BaseApplication.getInstance().onUserUnauthorized();
+                }
+            } else if (e instanceof HttpResultException) {
+                //服务器返回的错误
+                HttpResultException resultException = (HttpResultException) e;
+                ex = new SourceException(resultException, resultException.getCode(), resultException.getMessage());
+            } else if (e instanceof JsonParseException
+                    || e instanceof JSONException
+                    || e instanceof ParseException) {
+                //解析错误
+                ex = new SourceException(e, SourceException.PARSE_ERROR, "Parse Error");
+            } else if (e instanceof IOException) {
+                if (!isNetworkOn())
+                    //没有网络
+                    onNoNet();
+                else
+                    //没有任何返回数据，无法解析域名等情况
+                    ex = new SourceException(e, SourceException.NETWORK_IO_ERROR, "Connect Server Error");
+            } else {
+                //未知错误
+                ex = new SourceException(e, SourceException.UNKNOWN_ERROR, "Unknown Error");
             }
-        } else if (e instanceof HttpResultException){
-            //服务器返回的错误
-            HttpResultException resultException = (HttpResultException) e;
-            ex = new SourceException(resultException, resultException.getCode(),resultException.getMessage());
-        } else if (e instanceof JsonParseException
-                || e instanceof JSONException
-                || e instanceof ParseException){
-            //解析错误
-            ex = new SourceException(e, SourceException.PARSE_ERROR,"Parse Error");
-        } else if(e instanceof IOException){
-            if(!isNetworkOn())
-                //没有网络
-                onNoNet();
-            else
-                //没有任何返回数据，无法解析域名等情况
-                ex = new SourceException(e, SourceException.NETWORK_IO_ERROR,"Connect Server Error");
-        } else {
-            //未知错误
-            ex = new SourceException(e, SourceException.UNKNOWN_ERROR,"Unknown Error");
-        }
-        if(ex!=null) {
-            LogHelper.e(LogHelper.TAG_SOURCE, ex.toString());
-            Toast.makeText(BaseApplication.getInstance(),ex.toString(),Toast.LENGTH_SHORT).show();
-            onError(ex);
+            if (ex != null) {
+                LogHelper.e(LogHelper.TAG_SOURCE, ex.toString());
+                Toast.makeText(BaseApplication.getInstance(), ex.toString(), Toast.LENGTH_SHORT).show();
+                onError(ex);
+            }
+        } catch (Exception e2){
+            e2.printStackTrace();
         }
     }
 
