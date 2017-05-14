@@ -88,6 +88,10 @@ public class PhotoChooseDialog extends DialogFragment {
             mCurrentPhotoPath = savedInstanceState.getString("path");
     }
 
+    public void setPhotoSelectedListener(OnPhotoSelectedListener mListener) {
+        this.mListener = mListener;
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -352,7 +356,7 @@ public class PhotoChooseDialog extends DialogFragment {
                         bitmap = data.getParcelableExtra("data");
                         //Send this bitmap to attached activity.
                         if (mListener != null)
-                            mListener.onGetBitmap(bitmap);
+                            mListener.onGetBitmap(bitmap,mCurrentPhotoPath);
                         else
                             onResult(bitmap);
                         getDialog().cancel();
@@ -370,7 +374,7 @@ public class PhotoChooseDialog extends DialogFragment {
          * the bitmap user choose
          * @param bitmap
          */
-        public void onGetBitmap(Bitmap bitmap);
+        public void onGetBitmap(Bitmap bitmap,String filePath);
     }
 
     public void onResult(Bitmap bitmap){
