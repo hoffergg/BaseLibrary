@@ -5,7 +5,7 @@ package com.dailycation.base.presenter;
  * Created by hoffer on 17/2/9.
  */
 
-public interface IRegisterPresenter extends IBasePresenter{
+public interface IRegisterPresenter extends IBasePresenter2{
     /**
      * Go register
      * @param userName

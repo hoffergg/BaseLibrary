@@ -8,4 +8,13 @@
     <string name="camera_permission_tip">没有相机权限，请检查是否开启权限</string>
     <string name="can_not_open_camera">无法打开相机</string>
     <string name="open_camera_tip">相机故障</string>
+    <string name="login">登录</string>
+    <string name="user_name">用户名/手机号</string>
+    <string name="pass">密码</string>
+    <string name="log_out">退出登录</string>
+    <string name="register_account">没有账号？注册一个</string>
+    <string name="register">注册</string>
+    <string name="to_login">已有账号，去登录</string>
+    <string name="user_or_pass_empty">用户名或密码为空</string>
+    <string name="register_success">注册成功</string>
 </resources>

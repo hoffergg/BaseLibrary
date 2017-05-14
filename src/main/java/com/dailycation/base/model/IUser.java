@@ -45,4 +45,6 @@ public interface IUser {
     void setUserAccount(String userAccount);
 
     void logout();
+
+    String getPassword();
 }

@@ -6,7 +6,7 @@ import com.dailycation.base.model.IUser;
  * Created by hoffer on 17/2/9.
  */
 
-public interface ILoginPresenter extends IBasePresenter{
+public interface ILoginPresenter extends IBasePresenter2{
     /**
      * 登录
      * @param userName 用户名

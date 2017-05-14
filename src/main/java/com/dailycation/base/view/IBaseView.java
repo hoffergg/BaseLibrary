@@ -6,6 +6,10 @@ package com.dailycation.base.view;
  */
 
 public interface IBaseView {
+    /**
+     * init view
+     */
+    void initView();
 
     /**
      * update loading UI
