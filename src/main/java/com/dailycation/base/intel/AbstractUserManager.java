@@ -1,5 +1,7 @@
 package com.dailycation.base.intel;
 
+import android.content.Context;
+
 import com.dailycation.base.model.IUser;
 
 /**
@@ -20,6 +22,16 @@ public abstract class AbstractUserManager {
 
     protected abstract void login(String userName, String pass);
 
+    /**
+     * save user to local,pre or db.
+     */
+    protected abstract void saveUser();
+
+    /**
+     * restore user form local.
+     */
+    protected abstract void restoreUser(Context context);
+
     protected abstract void logout();
 
     public boolean isLogin(){
@@ -30,5 +42,5 @@ public abstract class AbstractUserManager {
      * init user
      * @param user
      */
-    protected abstract void initUser(IUser user);
+    protected abstract void initUser(Context context, IUser user);
 }

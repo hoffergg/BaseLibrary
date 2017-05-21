@@ -356,7 +356,7 @@ public class PhotoChooseDialog extends DialogFragment {
                         bitmap = data.getParcelableExtra("data");
                         //Send this bitmap to attached activity.
                         if (mListener != null)
-                            mListener.onGetBitmap(bitmap,mCurrentPhotoPath);
+                            mListener.onGetBitmap(bitmap);
                         else
                             onResult(bitmap);
                         getDialog().cancel();
@@ -374,7 +374,7 @@ public class PhotoChooseDialog extends DialogFragment {
          * the bitmap user choose
          * @param bitmap
          */
-        public void onGetBitmap(Bitmap bitmap,String filePath);
+        public void onGetBitmap(Bitmap bitmap);
     }
 
     public void onResult(Bitmap bitmap){
