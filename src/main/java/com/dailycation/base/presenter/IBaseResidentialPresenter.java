@@ -40,6 +40,9 @@ public interface IBaseResidentialPresenter extends IBasePresenter2{
      */
     void register(String userName,String password,String rePassword,String verifyCode);
 
+    void register(String userName,String password,String rePassword,String verifyCode,String name,int sex);
+
+
     /**
      * check all the input
      * @param userName
