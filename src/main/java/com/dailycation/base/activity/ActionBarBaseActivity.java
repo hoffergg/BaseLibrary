@@ -20,8 +20,10 @@ public class ActionBarBaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setDisplayShowHomeEnabled(true);
+        if(mActionBar!=null) {
+            mActionBar.setDisplayHomeAsUpEnabled(true);
+            mActionBar.setDisplayShowHomeEnabled(true);
+        }
     }
 
     @Override
