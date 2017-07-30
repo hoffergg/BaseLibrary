@@ -15,4 +15,10 @@
         <attr name="settingBorderSize" format="reference|dimension" />
         <attr name="settingBorderColor" format="reference|integer" />
     </declare-styleable>
+
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
 </resources>
