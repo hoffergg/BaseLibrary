@@ -18,4 +18,6 @@
     <string name="to_login">已有账号，去登录</string>
     <string name="user_or_pass_empty">用户名或密码为空</string>
     <string name="register_success">注册成功</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>
