@@ -264,7 +264,7 @@ public class PhotoChooseDialog extends DialogFragment {
         createNoMediaFile(storageDir);
         File image = new File(storageDir + "/avatar.tmp");
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
 
@@ -353,7 +353,7 @@ public class PhotoChooseDialog extends DialogFragment {
                         if(mNeedCrop)
                             crop(Uri.parse(mCurrentPhotoPath));
                         else
-                            onResultUri(Uri.parse(mCurrentPhotoPath));
+                            onResultPath(mCurrentPhotoPath);
                     }
                     else
                         Log.e(TAG,"mCurrentPhotoPath is null");
@@ -366,7 +366,7 @@ public class PhotoChooseDialog extends DialogFragment {
                         if(mNeedCrop)
                             crop(uri);
                         else
-                            onResultUri(uri);
+                            onResultPath(getPath(uri));
                     }
                 }
                 break;
@@ -386,6 +386,24 @@ public class PhotoChooseDialog extends DialogFragment {
         }
     }
 
+    /**
+     * get path from content uri,like content://media/external/images/media/15
+     * @param contentUri
+     * @return
+     */
+    public String getPath(Uri contentUri){
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getActivity().getContentResolver().query(
+                contentUri, filePathColumn, null, null, null);
+        if(cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String filePath = cursor.getString(columnIndex);
+            cursor.close();
+            return filePath;
+        }
+        return null;
+    }
+
     public interface OnPhotoSelectedListener{
         /**
          * the bitmap user choose
@@ -398,6 +416,12 @@ public class PhotoChooseDialog extends DialogFragment {
          * @param uri
          */
         void onGetImageUri(Uri uri);
+
+        /**
+         * send image path
+         * @param path
+         */
+        void onGetImagePath(String path);
     }
 
     /**
@@ -407,6 +431,15 @@ public class PhotoChooseDialog extends DialogFragment {
     public void onResultUri(Uri uri){
         if(mListener!=null)
             mListener.onGetImageUri(uri);
+        getDialog().cancel();
+    }
+
+    /**
+     * send uri result to target activity
+     */
+    public void onResultPath(String path){
+        if(mListener!=null)
+            mListener.onGetImagePath(path);
         getDialog().cancel();
     }
 
