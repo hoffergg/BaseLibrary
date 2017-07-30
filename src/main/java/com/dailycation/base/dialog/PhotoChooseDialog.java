@@ -57,6 +57,15 @@ public class PhotoChooseDialog extends DialogFragment {
     private BaseApplication application = BaseApplication.getInstance();
     private String mFileDir = "temp";
 
+    /**
+     * is need mNeedCrop after choose or pick.
+     */
+    private boolean mNeedCrop = true;
+
+    public void setNeedCrop(boolean mNeedCrop) {
+        this.mNeedCrop = mNeedCrop;
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -165,16 +174,6 @@ public class PhotoChooseDialog extends DialogFragment {
     }
 
     public void takePhotoWithPermission(){
-        if(PermissionChecker.checkCallingOrSelfPermission(getActivity(),Manifest.permission.CAMERA) != PermissionChecker.PERMISSION_GRANTED){
-            String title = getString(R.string.no_camera_permission);
-            String content = getString(R.string.camera_permission_tip);
-            showPermissionDialog(title,content);
-            return;
-        }
-        if(!checkCamera()){
-            showPermissionDialog(getString(R.string.can_not_open_camera),getString(R.string.open_camera_tip));
-            return;
-        }
         if( Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -186,6 +185,24 @@ public class PhotoChooseDialog extends DialogFragment {
                 dispatchTakePictureIntent();
         }else
             dispatchTakePictureIntent();
+    }
+
+    /**
+     * check whether permission and camera is ready.
+     * @return
+     */
+    public boolean isReady(){
+        if(PermissionChecker.checkCallingOrSelfPermission(getActivity(),Manifest.permission.CAMERA) != PermissionChecker.PERMISSION_GRANTED){
+            String title = getString(R.string.no_camera_permission);
+            String content = getString(R.string.camera_permission_tip);
+            showPermissionDialog(title,content);
+            return false;
+        }
+        if(!checkCamera()){
+            showPermissionDialog(getString(R.string.can_not_open_camera),getString(R.string.open_camera_tip));
+            return false;
+        }
+        return true;
     }
 
     public void showPermissionDialog(String title,String content){
@@ -310,7 +327,7 @@ public class PhotoChooseDialog extends DialogFragment {
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
+        intent.putExtra("mNeedCrop", "true");
         // 裁剪框的比例，1：1
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
@@ -333,9 +350,10 @@ public class PhotoChooseDialog extends DialogFragment {
                 if(resultCode == Activity.RESULT_OK) {
                     File myFile = new File(mCurrentPhotoPath);
                     if(mCurrentPhotoPath!=null) {
-                        crop(Uri.parse(mCurrentPhotoPath));
-                        //删除保存在DICM内图片
-                        deleteLastPhotoTaken();
+                        if(mNeedCrop)
+                            crop(Uri.parse(mCurrentPhotoPath));
+                        else
+                            onResultUri(Uri.parse(mCurrentPhotoPath));
                     }
                     else
                         Log.e(TAG,"mCurrentPhotoPath is null");
@@ -345,7 +363,10 @@ public class PhotoChooseDialog extends DialogFragment {
                 if(resultCode == Activity.RESULT_OK) {
                     if (data != null) {
                         Uri uri = data.getData();
-                        crop(uri);
+                        if(mNeedCrop)
+                            crop(uri);
+                        else
+                            onResultUri(uri);
                     }
                 }
                 break;
@@ -354,11 +375,7 @@ public class PhotoChooseDialog extends DialogFragment {
                     Bitmap bitmap;
                     try {
                         bitmap = data.getParcelableExtra("data");
-                        //Send this bitmap to attached activity.
-                        if (mListener != null)
-                            mListener.onGetBitmap(bitmap);
-                        else
-                            onResult(bitmap);
+                        onResult(bitmap);
                         getDialog().cancel();
 
                     } catch (Exception e) {
@@ -375,9 +392,31 @@ public class PhotoChooseDialog extends DialogFragment {
          * @param bitmap
          */
         public void onGetBitmap(Bitmap bitmap);
+
+        /**
+         * send the image uri
+         * @param uri
+         */
+        void onGetImageUri(Uri uri);
     }
 
+    /**
+     * send uri result to target activity
+     * @param uri
+     */
+    public void onResultUri(Uri uri){
+        if(mListener!=null)
+            mListener.onGetImageUri(uri);
+        getDialog().cancel();
+    }
+
+    /**
+     * send bitmap result to target.
+     * @param bitmap
+     */
     public void onResult(Bitmap bitmap){
+        if (mListener != null)
+            mListener.onGetBitmap(bitmap);
         if(getTargetFragment()!=null) {
             Intent intent = new Intent();
             intent.putExtra(EXTRA_BITMAP, bitmap);

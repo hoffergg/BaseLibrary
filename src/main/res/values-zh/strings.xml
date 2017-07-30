@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">BaseLibrary</string>
     <string name="no_net_connected">无网络连接</string>
-    <string name="from_cam">Take Now</string>
-    <string name="from_gallery">From Gallery</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
-    <string name="no_camera_permission">No camera permission</string>
-    <string name="camera_permission_tip">No camera permission,Please check.</string>
-    <string name="can_not_open_camera">Can not open camera</string>
-    <string name="open_camera_tip">Camera is not working</string>
+    <string name="from_cam">拍照</string>
+    <string name="from_gallery">从相机选择</string>
+    <string name="cancel">取消</string>
+    <string name="no_camera_permission">没有相机权限</string>
+    <string name="camera_permission_tip">没有相机权限，请检查是否开启权限</string>
+    <string name="can_not_open_camera">无法打开相机</string>
+    <string name="open_camera_tip">相机故障</string>
     <string name="login">登录</string>
     <string name="user_name">用户名/手机号</string>
     <string name="pass">密码</string>

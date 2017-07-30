@@ -5,4 +5,14 @@
         <attr name="itemTitle" format="reference|string" />
         <attr name="itemNextIcon" format="reference" />
     </declare-styleable>
+    <declare-styleable name="SettingItemView">
+        <attr name="settingIcon" format="reference" />
+        <attr name="settingTitle" format="reference|string" />
+        <attr name="settingText" format="reference|string" />
+        <attr name="settingHint" format="reference|string" />
+        <attr name="settingImage" format="reference" />
+        <attr name="settingNextIcon" format="reference" />
+        <attr name="settingBorderSize" format="reference|dimension" />
+        <attr name="settingBorderColor" format="reference|integer" />
+    </declare-styleable>
 </resources>
