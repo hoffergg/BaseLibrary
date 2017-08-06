@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">BaseLibrary</string>
     <string name="no_net_connected">无网络连接</string>
     <string name="from_cam">拍照</string>
     <string name="from_gallery">从相机选择</string>
