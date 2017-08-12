@@ -50,10 +50,11 @@ public class PhotoChooseDialog extends DialogFragment {
     private final static int OUTPUT_SIZE_HEIGHT = 100;
     public static final String EXTRA_BITMAP = "extra_bitmap";
     private final static String TAG = PhotoChooseDialog.class.getSimpleName();
+    private static final int PIC_PERMISSION_REQUEST = 302;
     private OnPhotoSelectedListener mListener;
     public String mCurrentPhotoPath;
     private boolean askedPermission = false;
-    private int PERMISSION_REQUEST = 301;
+    private int TAKE_PERMISSION_REQUEST = 301;
     private BaseApplication application = BaseApplication.getInstance();
     private String mFileDir = "temp";
 
@@ -167,6 +168,15 @@ public class PhotoChooseDialog extends DialogFragment {
     }
 
     private void dispatchPickPictureIntent() {
+        if( Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PIC_PERMISSION_REQUEST);
+                return;
+            }
+        }
+
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
         photoPickerIntent.setType("image/*");
         if(photoPickerIntent.resolveActivity(getActivity().getPackageManager())!=null)
@@ -179,7 +189,7 @@ public class PhotoChooseDialog extends DialogFragment {
                     != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSION_REQUEST);
+                        TAKE_PERMISSION_REQUEST);
                 return;
             } else
                 dispatchTakePictureIntent();
@@ -459,13 +469,15 @@ public class PhotoChooseDialog extends DialogFragment {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if(requestCode == PERMISSION_REQUEST) {
+        if(requestCode == TAKE_PERMISSION_REQUEST) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // permission was granted
                 dispatchTakePictureIntent();
             } else {
                 // TODO: display better error message.
             }
+        }else if(requestCode == PIC_PERMISSION_REQUEST){
+            dispatchPickPictureIntent();
         }
     }
 
