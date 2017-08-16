@@ -25,7 +25,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingRight="@dimen/small_margin">
+            android:paddingRight="@dimen/small_margin"
+            android:paddingLeft="@dimen/small_margin">
             <TextView
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
