@@ -405,7 +405,7 @@ public class PhotoChooseDialog extends DialogFragment {
         String[] filePathColumn = {MediaStore.Images.Media.DATA};
         Cursor cursor = getActivity().getContentResolver().query(
                 contentUri, filePathColumn, null, null, null);
-        if(cursor.moveToFirst()) {
+        if(cursor!=null && cursor.moveToFirst()) {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String filePath = cursor.getString(columnIndex);
             cursor.close();
