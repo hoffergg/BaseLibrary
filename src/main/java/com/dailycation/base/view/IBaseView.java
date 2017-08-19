@@ -1,5 +1,7 @@
 package com.dailycation.base.view;
 
+import android.content.Context;
+
 /**
  * Created by hoffer on 17/1/21.
  *
@@ -32,4 +34,6 @@ public interface IBaseView {
      * @param msg
      */
     void showMessage(String msg);
+
+    Context getContext();
 }
