@@ -11,6 +11,7 @@
         <attr name="settingText" format="reference|string" />
         <attr name="settingHint" format="reference|string" />
         <attr name="settingImage" format="reference" />
+        <attr name="settingContentLeftDrawable" format="reference" />
         <attr name="settingNextIcon" format="reference" />
         <attr name="settingBorderSize" format="reference|dimension" />
         <attr name="settingBorderColor" format="reference|integer" />

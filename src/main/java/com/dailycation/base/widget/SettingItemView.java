@@ -19,7 +19,7 @@ import com.dailycation.base.R;
  */
 
 public class SettingItemView extends LinearLayout {
-    Drawable icon,image,rightIcon;
+    Drawable icon,image,rightIcon, contentLeftDrawable;
     String title,content,contentHint;
     float borderSize;
     int borderColor;
@@ -50,7 +50,7 @@ public class SettingItemView extends LinearLayout {
         icon = a.getDrawable(R.styleable.SettingItemView_settingIcon);
         rightIcon = a.getDrawable(R.styleable.SettingItemView_settingNextIcon);
         image = a.getDrawable(R.styleable.SettingItemView_settingImage);
-
+        contentLeftDrawable = a.getDrawable(R.styleable.SettingItemView_settingContentLeftDrawable);
         title = a.getString(R.styleable.SettingItemView_settingTitle);
         content = a.getString(R.styleable.SettingItemView_settingText);
         contentHint = a.getString(R.styleable.SettingItemView_settingHint);
@@ -73,6 +73,8 @@ public class SettingItemView extends LinearLayout {
             contentView.setText(contentHint);
         if(content!=null)
             contentView.setText(content);
+        if(contentLeftDrawable !=null)
+            contentView.setCompoundDrawablesWithIntrinsicBounds(contentLeftDrawable,null,null,null);
         if(image!=null)
             imageView.setImageDrawable(image);
 
