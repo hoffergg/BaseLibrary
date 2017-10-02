@@ -6,8 +6,8 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/medium_margin"
-        android:paddingBottom="@dimen/medium_margin"
+        android:paddingTop="@dimen/small_margin"
+        android:paddingBottom="@dimen/small_margin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
@@ -34,7 +34,7 @@
                 android:lines="1"
                 android:ellipsize="end"
                 android:textColor="#333333"
-                android:textSize="13sp"
+                android:textSize="10sp"
                 android:drawablePadding="5dp"
                 android:layout_gravity="right|center_vertical"/>
             <ImageView
