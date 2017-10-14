@@ -8,7 +8,7 @@
     <string name="camera_permission_tip">No camera permission,Please check.</string>
     <string name="can_not_open_camera">Can not open camera</string>
     <string name="open_camera_tip">Camera is not working</string>
-    <string name="login">登录</string>
+    <string name="login">login</string>
     <string name="user_name">用户名/手机号</string>
     <string name="pass">密码</string>
     <string name="log_out">退出登录</string>
