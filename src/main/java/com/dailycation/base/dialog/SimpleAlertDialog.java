@@ -39,6 +39,7 @@ public class SimpleAlertDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         if(mTitle!=null)
             builder.setTitle(mTitle);
@@ -58,8 +59,14 @@ public class SimpleAlertDialog extends DialogFragment {
                     mListener.onPositive();
             }
         });
-        builder.create().show();
-
+        dialog = builder.create();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if(mListener!=null)
+                    mListener.onDismiss();
+            }
+        });
         return builder.create();
     }
 
@@ -70,5 +77,7 @@ public class SimpleAlertDialog extends DialogFragment {
     public interface OnAlertActionListener{
         void onPositive();
         void onNegative();
+
+        void onDismiss();
     }
 }
