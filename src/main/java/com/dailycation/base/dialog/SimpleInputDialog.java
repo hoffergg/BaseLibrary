@@ -2,11 +2,15 @@ package com.dailycation.base.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.dailycation.base.R;
 
@@ -62,11 +66,13 @@ public class SimpleInputDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final EditText editText = new EditText(getActivity());
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        editText.setLayoutParams(params);
-        builder.setView(editText);
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.simple_input,null);
+        final EditText editText = (EditText) view.findViewById(R.id.et_content);
+
+        builder.setView(view);
         if(mTitle!=null)
             builder.setTitle(mTitle);
         if(mHint!=null)
@@ -87,8 +93,8 @@ public class SimpleInputDialog extends DialogFragment {
                     mListener.onCancel();
             }
         });
-
-        return builder.create();
+        dialog = builder.create();
+        return dialog;
     }
 
     public interface OnInputActionListener{
