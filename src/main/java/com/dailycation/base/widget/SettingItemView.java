@@ -21,6 +21,7 @@ import com.dailycation.base.R;
 public class SettingItemView extends LinearLayout {
     Drawable icon,image,rightIcon, contentLeftDrawable;
     String title,content,contentHint;
+    int unReadCount;
     float borderSize;
     int borderColor;
 
@@ -30,6 +31,8 @@ public class SettingItemView extends LinearLayout {
     ImageView imageView;
 
     TextView contentView;
+
+    TextView tvUnread;
 
     public SettingItemView(Context context) {
         super(context);
@@ -61,6 +64,7 @@ public class SettingItemView extends LinearLayout {
         TextView titleView = (TextView) view.findViewById(R.id.title);
         contentView = (TextView) view.findViewById(R.id.content);
         imageView = (ImageView) view.findViewById(R.id.image);
+        tvUnread = (TextView) view.findViewById(R.id.tv_unread);
 
 
         if(icon!=null)
@@ -77,7 +81,8 @@ public class SettingItemView extends LinearLayout {
             contentView.setCompoundDrawablesWithIntrinsicBounds(contentLeftDrawable,null,null,null);
         if(image!=null)
             imageView.setImageDrawable(image);
-
+        if(unReadCount!=0)
+            tvUnread.setText(String.valueOf(tvUnread));
         view.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         addView(view);
@@ -89,6 +94,12 @@ public class SettingItemView extends LinearLayout {
      */
     public void setImage(Drawable image){
         imageView.setImageDrawable(image);
+    }
+
+    public void setUnReadCount(int unReadCount) {
+        this.unReadCount = unReadCount;
+        if(unReadCount!=0)
+            tvUnread.setText(String.valueOf(tvUnread));
     }
 
     /**

@@ -44,6 +44,13 @@
                 android:scaleType="centerCrop"
                 android:layout_gravity="right|center_vertical"/>
         </FrameLayout>
+        <TextView
+            android:id="@+id/tv_unread"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/sec_unread"
+            android:gravity="center"
+            android:text="10"/>
         <ImageView
             android:id="@+id/next_icon"
             android:layout_width="wrap_content"
