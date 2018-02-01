@@ -46,11 +46,12 @@
         </FrameLayout>
         <TextView
             android:id="@+id/tv_unread"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/sec_unread"
+            android:layout_marginRight="@dimen/medium_margin"
             android:gravity="center"
-            android:text="10"/>
+            android:textColor="@android:color/white"/>
         <ImageView
             android:id="@+id/next_icon"
             android:layout_width="wrap_content"

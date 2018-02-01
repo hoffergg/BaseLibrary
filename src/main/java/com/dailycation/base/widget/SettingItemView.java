@@ -81,8 +81,12 @@ public class SettingItemView extends LinearLayout {
             contentView.setCompoundDrawablesWithIntrinsicBounds(contentLeftDrawable,null,null,null);
         if(image!=null)
             imageView.setImageDrawable(image);
-        if(unReadCount!=0)
+        if(unReadCount!=0) {
             tvUnread.setText(String.valueOf(tvUnread));
+            tvUnread.setVisibility(VISIBLE);
+        }else {
+            tvUnread.setVisibility(GONE);
+        }
         view.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         addView(view);
@@ -98,8 +102,12 @@ public class SettingItemView extends LinearLayout {
 
     public void setUnReadCount(int unReadCount) {
         this.unReadCount = unReadCount;
-        if(unReadCount!=0)
-            tvUnread.setText(String.valueOf(tvUnread));
+        if(unReadCount!=0) {
+            tvUnread.setText(String.valueOf(unReadCount));
+            tvUnread.setVisibility(VISIBLE);
+        }else {
+            tvUnread.setVisibility(GONE);
+        }
     }
 
     /**
