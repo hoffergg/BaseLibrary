@@ -8,12 +8,15 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/small_margin"
         android:paddingBottom="@dimen/small_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/icon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"/>
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -57,10 +60,4 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/border"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="vertical"
-        android:background="#dddddd"/>
 </LinearLayout>
