@@ -58,14 +58,15 @@ public class TextUtil {
      */
     public static String getFormatSpanTime(Context context,long time){
         String[] timeUnitArray = context.getResources().getStringArray(R.array.time_unit);
-        long twoMonth = 60*24*3600*1000;
-        if(time>twoMonth){
+        if(time>60*24*3600*1000L){
             return "60 " + timeUnitArray[3];
-        }else if(time>twoMonth - twoMonth/2){
+        }else if(time>30*24*3600*1000L){
             return "30 " + timeUnitArray[3];
-        }else if(time>3*24*3600*1000){
+        }else if(time>15*24*3600*1000L){
+            return "15 " + timeUnitArray[3];
+        }else if(time>3*24*3600*1000L){
             return "3 " + timeUnitArray[3];
-        }else if(time>24*3600*1000){
+        }else if(time>24*3600*1000L){
             return "1 " + timeUnitArray[2];
         }else if(time>3600*1000){
             return time/(3600*1000) + " " + timeUnitArray[5];
