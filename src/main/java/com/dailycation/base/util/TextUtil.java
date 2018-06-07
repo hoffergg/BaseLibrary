@@ -68,8 +68,10 @@ public class TextUtil {
             return "3 " + timeUnitArray[3];
         }else if(time>24*3600*1000L){
             return "1 " + timeUnitArray[2];
-        }else if(time>3600*1000){
+        }else if(time>2*3600*1000){
             return time/(3600*1000) + " " + timeUnitArray[5];
+        }else if(time>3600*1000){
+            return "1 " + timeUnitArray[4];
         }else if(time>60*1000){
             return time/(60*1000) + " " + timeUnitArray[7];
         }else if(time>1000){
