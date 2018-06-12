@@ -22,8 +22,8 @@ public class SettingItemView extends LinearLayout {
     Drawable icon,image,rightIcon, contentLeftDrawable;
     String title,content,contentHint;
     int unReadCount;
-    float borderSize;
-    int borderColor;
+    LinearLayout llBorder;
+    int layoutRes;
 
     /**
      * Image content
@@ -57,15 +57,16 @@ public class SettingItemView extends LinearLayout {
         title = a.getString(R.styleable.SettingItemView_settingTitle);
         content = a.getString(R.styleable.SettingItemView_settingText);
         contentHint = a.getString(R.styleable.SettingItemView_settingHint);
+        layoutRes = a.getResourceId(R.styleable.SettingItemView_settingLayout,R.layout.setting_item);
 
-        View view = inflate(context,R.layout.setting_item,null);
+        View view = inflate(context,layoutRes,null);
         ImageView iconView = (ImageView) view.findViewById(R.id.icon);
         ImageView nextIconView = (ImageView) view.findViewById(R.id.next_icon);
         TextView titleView = (TextView) view.findViewById(R.id.title);
         contentView = (TextView) view.findViewById(R.id.content);
         imageView = (ImageView) view.findViewById(R.id.image);
         tvUnread = (TextView) view.findViewById(R.id.tv_unread);
-
+        llBorder = (LinearLayout) view.findViewById(R.id.border);
 
         if(icon!=null)
             iconView.setImageDrawable(icon);
