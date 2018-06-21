@@ -1,8 +1,10 @@
 package com.dailycation.base;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 
 import com.dailycation.base.model.IUser;
 
@@ -19,12 +21,61 @@ public class BaseApplication extends Application implements IApplication {
     public static BaseApplication getInstance(){
         return instance;
     }
+    protected Activity mCurrentActivity;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
         initDebugTools();
+        registerActivityLifeCallBack();
+    }
+
+    public Activity getCurrentActivity() {
+        return mCurrentActivity;
+    }
+
+    public void registerActivityLifeCallBack(){
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+                mCurrentActivity = activity;
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+                mCurrentActivity = activity;
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+                if(activity == mCurrentActivity){
+                    mCurrentActivity = null;
+                }
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                if(activity == mCurrentActivity){
+                    mCurrentActivity = null;
+                }
+            }
+        });
     }
 
     /**
