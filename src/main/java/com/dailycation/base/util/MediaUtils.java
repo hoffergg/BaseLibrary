@@ -2,10 +2,17 @@ package com.dailycation.base.util;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +58,45 @@ public class MediaUtils {
             }
         });
         thread.start();
+    }
+
+    /**
+     * 文件拷贝
+     * @param src
+     * @param dst
+     * @throws IOException
+     */
+    public static void copy(File src, File dst) throws IOException {
+        InputStream in = new FileInputStream(src);
+        try {
+            OutputStream out = new FileOutputStream(dst);
+            try {
+                // Transfer bytes from in to out
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+            } finally {
+                out.close();
+            }
+        } finally {
+            in.close();
+        }
+    }
+
+    /**
+     * 文件重命名
+     * @param originPath
+     * @param destName
+     */
+    public static String renameFile(String originPath,String destName){
+        File from = new File(originPath);
+        String path = from.getParent();
+        File to = new File(path + destName);
+        if(from.exists())
+            from.renameTo(to);
+        return to.getAbsolutePath();
     }
 
     public static class EntityVideo{
