@@ -16,7 +16,6 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.text.ParseException;
 
-import okhttp3.internal.http.RequestException;
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
@@ -34,10 +33,7 @@ public abstract class SourceSubscriber<T> extends Subscriber<T> {
             if (e instanceof RequestParamNullException) {
                 //请求参数组装时遇到null错误
                 ex = new SourceException(e, SourceException.REQUEST_PARAM_NULL_ERROR, "Request Make Params Encounter Null Exception");
-            } else if (e instanceof RequestException) {
-                //请求错误，请求本身错误、网络错误
-                ex = new SourceException(e, SourceException.REQUEST_ERROR, "Request Exception");
-            } else if (e instanceof HttpException) {
+            }  else if (e instanceof HttpException) {
                 //HTTP错误
                 HttpException httpException = (HttpException) e;
                 ex = new SourceException(e, httpException.code(), httpException.message());
