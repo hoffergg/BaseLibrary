@@ -4,7 +4,10 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.net.Uri;
+import android.view.Display;
+import android.view.WindowManager;
 
 /**
  * Created by hehu on 18-3-16.
@@ -34,5 +37,18 @@ public class SysUtil {
             context.startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("http://play.google.com/store/apps/details?id=" + pkgName)));
         }
+    }
+
+    /**
+     * 获取window宽度
+     * @param context
+     * @return
+     */
+    public static int getWindowWidth (Context context){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.x;
     }
 }
