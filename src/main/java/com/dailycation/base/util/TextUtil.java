@@ -79,4 +79,13 @@ public class TextUtil {
         }
         return "";
     }
+
+    /**
+     * 把时间长度格式化可读
+     * @param seconds
+     * @return
+     */
+    public static String getDurationTime(int seconds){
+      return "00:00";
+    }
 }
