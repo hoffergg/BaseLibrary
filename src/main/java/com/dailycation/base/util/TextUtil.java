@@ -7,6 +7,8 @@ import com.dailycation.base.R;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by hoffer on 17/2/10.
@@ -87,5 +89,13 @@ public class TextUtil {
      */
     public static String getDurationTime(int seconds){
       return "00:00";
+    }
+
+    public static String formatTime(long timeMs) {
+        return String.format(Locale.CHINA, "%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(timeMs),
+                TimeUnit.MILLISECONDS.toSeconds(timeMs) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMs))
+        );
     }
 }
