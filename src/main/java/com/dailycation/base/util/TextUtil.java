@@ -98,4 +98,19 @@ public class TextUtil {
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMs))
         );
     }
+
+    /**
+     * 格式化数据显示
+     * @param count
+     * @return
+     */
+    public static String formatCount(Context context,long count) {
+        if(count>10000){
+            return String.valueOf((float) count/10000) + "w";
+        }else if(count>1000){
+            return String.valueOf((float) count/1000) + "k";
+        }else {
+            return String.valueOf(count);
+        }
+    }
 }
