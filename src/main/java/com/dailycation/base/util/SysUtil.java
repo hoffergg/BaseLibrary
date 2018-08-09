@@ -51,4 +51,17 @@ public class SysUtil {
         display.getSize(size);
         return size.x;
     }
+
+    /**
+     * 获取window宽度
+     * @param context
+     * @return
+     */
+    public static int getWindowHeight (Context context){
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        return size.y;
+    }
 }
