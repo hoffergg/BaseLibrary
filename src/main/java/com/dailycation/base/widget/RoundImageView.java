@@ -25,7 +25,7 @@ import com.dailycation.base.R;
 public class RoundImageView extends AppCompatImageView {
 	private int mBorderThickness = 0;
 	private Context mContext;
-	private int defaultColor = 0xFFFFFFFF;
+	private int defaultColor = 0;
 	// 如果只有其中一个有值，则只画一个圆形边框
 	private int mBorderOutsideColor = 0;
 	private int mBorderInsideColor = 0;
