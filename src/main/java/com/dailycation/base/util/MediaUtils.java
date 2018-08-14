@@ -48,8 +48,8 @@ public class MediaUtils {
                         info.setPath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA)));
                         info.setDuration(cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION)));
                         //把没有缩略图的视频排除
-                        if(info.getThumbPath()!=null)
-                            sysVideoList.add(info);
+                        //if(info.getThumbPath()!=null)
+                        sysVideoList.add(info);
                     } while (cursor.moveToNext());
                 }
                 Message message = new Message();
