@@ -88,7 +88,7 @@ public class FlowLayout extends ViewGroup {
 
     @Override
     protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
-        return new LayoutParams(1, 1); // default of 1px spacing
+        return new LayoutParams(10, 10); // default of 1px spacing
     }
 
     @Override
