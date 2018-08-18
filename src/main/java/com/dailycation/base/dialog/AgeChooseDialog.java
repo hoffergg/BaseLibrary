@@ -25,12 +25,16 @@ public class AgeChooseDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        final String[] ages = new String[99];
+        for(int i=0;i<99;i++){
+            ages[i] = String.valueOf(i+18);
+        }
         builder.setTitle("Your age");
-        builder.setItems(R.array.age, new DialogInterface.OnClickListener() {
+        builder.setItems(ages, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(mListener!=null)
-                    mListener.onChooseAge(which + 17);
+                    mListener.onChooseAge(Integer.valueOf(ages[which]));
             }
         });
         return builder.create();
