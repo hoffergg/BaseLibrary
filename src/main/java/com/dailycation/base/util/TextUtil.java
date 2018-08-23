@@ -113,4 +113,8 @@ public class TextUtil {
             return String.valueOf(count);
         }
     }
+
+    public static String getFormatDate(int year,int month,int day){
+        return year + "-" + (month+1)+ "-" + day;
+    }
 }
