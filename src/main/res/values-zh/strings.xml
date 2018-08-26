@@ -17,4 +17,7 @@
     <string name="user_or_pass_empty">用户名或密码为空</string>
     <string name="register_success">注册成功</string>
     <string name="ok">确定</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="gender">性别</string>
 </resources>
