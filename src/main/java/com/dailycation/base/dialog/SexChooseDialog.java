@@ -33,7 +33,7 @@ public class SexChooseDialog extends DialogFragment {
                     mListener.onChooseSex(which + 1);
             }
         });
-        return super.onCreateDialog(savedInstanceState);
+        return builder.create();
     }
 
     public interface OnSexChooseListener{
