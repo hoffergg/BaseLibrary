@@ -25,7 +25,7 @@ public class SexChooseDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Gender");
+        builder.setTitle(getString(R.string.gender));
         builder.setItems(new String[]{getActivity().getString(R.string.male), getActivity().getString(R.string.female)}, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -33,7 +33,7 @@ public class SexChooseDialog extends DialogFragment {
                     mListener.onChooseSex(which + 1);
             }
         });
-        return super.onCreateDialog(savedInstanceState);
+        return builder.create();
     }
 
     public interface OnSexChooseListener{

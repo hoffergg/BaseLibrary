@@ -83,10 +83,14 @@ public class SettingItemView extends LinearLayout {
         if(image!=null)
             imageView.setImageDrawable(image);
         if(unReadCount!=0) {
-            tvUnread.setText(String.valueOf(tvUnread));
-            tvUnread.setVisibility(VISIBLE);
+            if(tvUnread!=null) {
+                tvUnread.setText(String.valueOf(tvUnread));
+                tvUnread.setVisibility(VISIBLE);
+            }
         }else {
-            tvUnread.setVisibility(GONE);
+            if(tvUnread!=null) {
+                tvUnread.setVisibility(GONE);
+            }
         }
         view.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 

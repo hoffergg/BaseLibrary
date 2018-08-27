@@ -5,8 +5,8 @@ import android.text.TextUtils;
 
 import com.dailycation.base.R;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -112,5 +112,15 @@ public class TextUtil {
         }else {
             return String.valueOf(count);
         }
+    }
+
+    public static String getFormatDate(int year,int month,int day){
+        return year + "-" + (month+1)+ "-" + day;
+    }
+
+    public static String getFormatDate(Date date){
+        if(date!=null)
+            return date.getYear()+1900 + "-" + (date.getMonth()+1)+ "-" + date.getDay();
+        return null;
     }
 }

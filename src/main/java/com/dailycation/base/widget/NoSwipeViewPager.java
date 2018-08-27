@@ -32,4 +32,9 @@ public class NoSwipeViewPager extends ViewPager {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         return false;
     }
+
+    @Override
+    public void setCurrentItem(int item) {
+        super.setCurrentItem(item,false);
+    }
 }
