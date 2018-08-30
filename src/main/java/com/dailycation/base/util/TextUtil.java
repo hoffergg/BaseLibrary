@@ -123,4 +123,11 @@ public class TextUtil {
             return date.getYear()+1900 + "-" + (date.getMonth()+1)+ "-" + date.getDay();
         return null;
     }
+
+    public static String getShowDistance(double meters){
+        if(meters<=1000)
+            return (int)meters + "m";
+        else
+            return (int)meters/1000 + "km";
+    }
 }
