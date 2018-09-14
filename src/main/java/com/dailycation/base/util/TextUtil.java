@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.dailycation.base.R;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,22 @@ public class TextUtil {
     public static String getSimpleTime(long l) {
         //TODO need to be done
         return "";
+    }
+
+    /**
+     * 当天的时间只显示小时分钟
+     * @param l
+     * @return
+     */
+    public static String getShortFormattedTime(long l) {
+        SimpleDateFormat sdf;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE),0,0,0);
+        if(l-calendar.getTimeInMillis()>0)
+            sdf = new SimpleDateFormat("HH:mm");
+        else
+            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(new Date(l));
     }
 
     public static String getFormattedTime(long l) {
