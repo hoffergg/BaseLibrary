@@ -2,7 +2,6 @@ package com.dailycation.base.helper;
 
 import android.widget.Toast;
 
-import com.dailycation.base.BaseApplication;
 import com.dailycation.base.R;
 import com.dailycation.base.data.source.SourceException;
 

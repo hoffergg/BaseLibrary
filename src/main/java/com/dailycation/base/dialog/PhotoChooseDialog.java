@@ -27,7 +27,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.dailycation.base.BaseApplication;
 import com.dailycation.base.R;
 
 import java.io.File;

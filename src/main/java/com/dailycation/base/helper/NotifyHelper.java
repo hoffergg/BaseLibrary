@@ -11,9 +11,6 @@ import android.net.Uri;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 
-import com.dailycation.base.BaseApplication;
-import com.dailycation.base.R;
-
 
 /**
  * @author hehu

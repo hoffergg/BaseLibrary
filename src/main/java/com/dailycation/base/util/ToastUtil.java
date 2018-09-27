@@ -2,8 +2,6 @@ package com.dailycation.base.util;
 
 import android.widget.Toast;
 
-import com.dailycation.base.BaseApplication;
-
 /**
  * Created by hoffer on 17/2/10.
  */
