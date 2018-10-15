@@ -30,7 +30,7 @@ public class AgeChooseDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(mListener!=null)
-                    mListener.onChooseAge(which + 17);
+                    mListener.onChooseAge(which + 18);
             }
         });
         return builder.create();
