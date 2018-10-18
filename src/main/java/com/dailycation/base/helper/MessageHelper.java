@@ -4,7 +4,6 @@ import android.widget.Toast;
 
 import com.dailycation.base.BaseApplication;
 import com.dailycation.base.R;
-import com.dailycation.base.data.source.SourceException;
 
 
 /**
@@ -18,9 +17,7 @@ public class MessageHelper {
         return BaseApplication.getInstance();
     }
 
-    public static void showSourceException(SourceException e){
-        Toast.makeText(getApplicationContext(),e.getMessage() + "(" + e.getCode() + ")",Toast.LENGTH_SHORT).show();
-    }
+
 
     public static void showMessage(int resId){
         Toast.makeText(getApplicationContext(),getApplicationContext().getString(resId),Toast.LENGTH_SHORT).show();
