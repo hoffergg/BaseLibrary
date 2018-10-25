@@ -1,5 +1,5 @@
 <resources>
-    <string name="no_net_connected">无网络连接</string>
+    <string name="no_net_connected">Network Error,Check Your Network</string>
     <string name="from_cam">Take Now</string>
     <string name="from_gallery">From Gallery</string>
     <string name="ok">Ok</string>
