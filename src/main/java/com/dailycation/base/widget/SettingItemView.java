@@ -82,9 +82,19 @@ public class SettingItemView extends LinearLayout {
             contentView.setCompoundDrawablesWithIntrinsicBounds(contentLeftDrawable,null,null,null);
         if(image!=null)
             imageView.setImageDrawable(image);
-        if(unReadCount!=0) {
+        showUnreadCount();
+        view.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        addView(view);
+    }
+
+    public void showUnreadCount(){
+        if(unReadCount>0) {
             if(tvUnread!=null) {
-                tvUnread.setText(String.valueOf(tvUnread));
+                if(unReadCount<100)
+                    tvUnread.setText(String.valueOf(unReadCount));
+                else
+                    tvUnread.setText("99+");
                 tvUnread.setVisibility(VISIBLE);
             }
         }else {
@@ -92,9 +102,6 @@ public class SettingItemView extends LinearLayout {
                 tvUnread.setVisibility(GONE);
             }
         }
-        view.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
-        addView(view);
     }
 
     /**
@@ -107,12 +114,7 @@ public class SettingItemView extends LinearLayout {
 
     public void setUnReadCount(int unReadCount) {
         this.unReadCount = unReadCount;
-        if(unReadCount!=0) {
-            tvUnread.setText(String.valueOf(unReadCount));
-            tvUnread.setVisibility(VISIBLE);
-        }else {
-            tvUnread.setVisibility(GONE);
-        }
+        showUnreadCount();
     }
 
     /**
