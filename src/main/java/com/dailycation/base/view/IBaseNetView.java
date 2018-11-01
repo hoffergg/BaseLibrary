@@ -5,6 +5,7 @@ import android.content.Context;
 public interface IBaseNetView {
     void showLoading(boolean show);
     void initView();
-    void showNoNet();
+    void showNoNet(boolean show);
+    void showNoData(boolean show);
     Context getContext();
 }
