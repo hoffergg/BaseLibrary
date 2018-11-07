@@ -1,9 +1,15 @@
 package com.dailycation.base.util;
 
+import android.content.Context;
 import android.text.TextUtils;
+
+import com.dailycation.base.R;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by hoffer on 17/2/10.
@@ -13,6 +19,22 @@ public class TextUtil {
     public static String getSimpleTime(long l) {
         //TODO need to be done
         return "";
+    }
+
+    /**
+     * 当天的时间只显示小时分钟
+     * @param l
+     * @return
+     */
+    public static String getShortFormattedTime(long l) {
+        SimpleDateFormat sdf;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE),0,0,0);
+        if(l-calendar.getTimeInMillis()>0)
+            sdf = new SimpleDateFormat("HH:mm");
+        else
+            sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(new Date(l));
     }
 
     public static String getFormattedTime(long l) {
@@ -47,5 +69,82 @@ public class TextUtil {
 
     public static boolean isPhoneNumber(String phone) {
         return !TextUtils.isEmpty(phone) && phone.length() == 11;
+    }
+
+    /**
+     * 获取格式化的间隔时间
+     * @return
+     */
+    public static String getFormatSpanTime(Context context, long time){
+        String[] timeUnitArray = context.getResources().getStringArray(R.array.time_unit);
+        if(time>60*24*3600*1000L){
+            return "60 " + timeUnitArray[3];
+        }else if(time>30*24*3600*1000L){
+            return "30 " + timeUnitArray[3];
+        }else if(time>15*24*3600*1000L){
+            return "15 " + timeUnitArray[3];
+        }else if(time>3*24*3600*1000L){
+            return "3 " + timeUnitArray[3];
+        }else if(time>24*3600*1000L){
+            return "1 " + timeUnitArray[2];
+        }else if(time>2*3600*1000){
+            return time/(3600*1000) + " " + timeUnitArray[5];
+        }else if(time>3600*1000){
+            return "1 " + timeUnitArray[4];
+        }else if(time>60*1000){
+            return time/(60*1000) + " " + timeUnitArray[7];
+        }else if(time>1000){
+            return time/1000 + " " + timeUnitArray[8];
+        }
+        return "";
+    }
+
+    /**
+     * 把时间长度格式化可读
+     * @param seconds
+     * @return
+     */
+    public static String getDurationTime(int seconds){
+      return "00:00";
+    }
+
+    public static String formatTime(long timeMs) {
+        return String.format(Locale.CHINA, "%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(timeMs),
+                TimeUnit.MILLISECONDS.toSeconds(timeMs) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMs))
+        );
+    }
+
+    /**
+     * 格式化数据显示
+     * @param count
+     * @return
+     */
+    public static String formatCount(Context context,long count) {
+        if(count>10000){
+            return String.valueOf((float) count/10000) + "w";
+        }else if(count>1000){
+            return String.valueOf((float) count/1000) + "k";
+        }else {
+            return String.valueOf(count);
+        }
+    }
+
+    public static String getFormatDate(int year,int month,int day){
+        return year + "-" + (month+1)+ "-" + day;
+    }
+
+    public static String getFormatDate(Date date){
+        if(date!=null)
+            return date.getYear()+1900 + "-" + (date.getMonth()+1)+ "-" + date.getDay();
+        return null;
+    }
+
+    public static String getShowDistance(double meters){
+        if(meters<=1000)
+            return (int)meters + "m";
+        else
+            return (int)meters/1000 + "km";
     }
 }

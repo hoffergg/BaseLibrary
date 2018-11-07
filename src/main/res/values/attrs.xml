@@ -13,8 +13,7 @@
         <attr name="settingImage" format="reference" />
         <attr name="settingContentLeftDrawable" format="reference" />
         <attr name="settingNextIcon" format="reference" />
-        <attr name="settingBorderSize" format="reference|dimension" />
-        <attr name="settingBorderColor" format="reference|integer" />
+        <attr name="settingLayout" format="reference|integer" />
     </declare-styleable>
 
     <declare-styleable name="roundedimageview">
