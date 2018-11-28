@@ -68,6 +68,8 @@ public class SysUtil {
     }
 
     public static boolean isNetworkConnected(Context context){
+        if(context == null)
+            return true;
         ConnectivityManager cm =
                 (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
