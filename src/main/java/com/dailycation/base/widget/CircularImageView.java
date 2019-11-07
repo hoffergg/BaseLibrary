@@ -10,9 +10,8 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class CircularImageView extends android.support.v7.widget.AppCompatImageView
+public class CircularImageView extends androidx.appcompat.widget.AppCompatImageView
 {
     private int borderWidth = 4;
     private int viewWidth;

@@ -5,9 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.widget.RadioButton;
 
-public class UnreadRadioButton extends android.support.v7.widget.AppCompatRadioButton {
+public class UnreadRadioButton extends androidx.appcompat.widget.AppCompatRadioButton {
     public UnreadRadioButton(Context context) {
         super(context);
     }

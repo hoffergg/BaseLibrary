@@ -1,7 +1,7 @@
 package com.dailycation.base.util;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
  * RecyclerView utils

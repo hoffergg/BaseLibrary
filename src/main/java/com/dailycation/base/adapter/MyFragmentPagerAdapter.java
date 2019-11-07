@@ -4,9 +4,9 @@ package com.dailycation.base.adapter;
  * Created by hehu on 16-12-26.
  */
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 /**
  * Created by hehu on 16-12-26.
